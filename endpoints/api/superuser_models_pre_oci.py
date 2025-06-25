@@ -34,7 +34,9 @@ def _create_user(user):
 
     quotas = _get_namespace_quotas(user)
 
-    return User(user.username, user.email, user.verified, user.enabled, user.robot, quotas)
+    return User(
+        user.uuid, user.username, user.email, user.verified, user.enabled, user.robot, quotas
+    )
 
 
 def _create_key(key):

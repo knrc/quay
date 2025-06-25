@@ -223,10 +223,13 @@ class ServiceKey(
         }
 
 
-class User(namedtuple("User", ["username", "email", "verified", "enabled", "robot", "quotas"])):
+class User(
+    namedtuple("User", ["uuid", "username", "email", "verified", "enabled", "robot", "quotas"])
+):
     """
     User represents a single user.
 
+    :type uuid: string
     :type username: string
     :type email: string
     :type verified: boolean
@@ -237,6 +240,7 @@ class User(namedtuple("User", ["username", "email", "verified", "enabled", "robo
     def to_dict(self):
         user_data = {
             "kind": "user",
+            "uuid": self.uuid,
             "name": self.username,
             "username": self.username,
             "email": self.email,
